@@ -222,9 +222,12 @@ public class Base implements Selenium_API {
             for (String targetId : idsToSelect) {
                 if (id.equals(targetId) && !checkbox.isSelected()) {
                     wait.until(ExpectedConditions.elementToBeClickable(checkbox)).click();
+                    
                 }
             }
         }
+        TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + idsToSelect);
+
     }
 
     @Override
@@ -238,6 +241,8 @@ public class Base implements Selenium_API {
                 }
             }
         }
+        TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + idsToUnselect);
+
     }
 
     @Override
@@ -246,6 +251,8 @@ public class Base implements Selenium_API {
         for (WebElement cb : checkboxes) {
             if (!cb.isSelected()) cb.click();
         }
+        TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + "");
+
     }
 
     // ----------------------------------------------------------------
@@ -259,6 +266,8 @@ public class Base implements Selenium_API {
         if (!destDir.exists()) destDir.mkdirs();
         File dest = new File(destDir, "img_" + timestamp + ".png");
         Files.copy(src, dest);
+        TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + src);
+
     }
 
     // ----------------------------------------------------------------
@@ -276,6 +285,9 @@ public class Base implements Selenium_API {
             case CSSSelector: return By.cssSelector(value);
             default: throw new IllegalArgumentException("Invalid locator type: " + locatorType);
         }
+        
+       
+
     }
 
 @Override
@@ -286,6 +298,8 @@ public void sendKeyEle(Locators type, String value) {
     } catch (Exception e) {
         System.err.println("❌ sendKeyEle() failed for: " + value + " — " + e.getMessage());
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + value);
+
 }
 
 @Override
@@ -296,6 +310,8 @@ public void selectByIndex(Locators locatorType, String value, int index) {
     } catch (Exception e) {
         System.err.println("❌ selectByIndex() failed: " + e.getMessage());
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + value);
+
 }
 
 @Override
@@ -305,6 +321,8 @@ public void selectValue(WebElement ele, String value) {
     } catch (Exception e) {
         System.err.println("❌ selectValue() failed: " + e.getMessage());
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + value);
+
 }
 
 @Override
@@ -314,6 +332,8 @@ public void selectText(WebElement ele, String value) {
     } catch (Exception e) {
         System.err.println("❌ selectText() failed: " + e.getMessage());
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + value);
+
 }
 
 @Override
@@ -324,6 +344,8 @@ public void selectIndex(WebElement ele, String value) {
     } catch (Exception e) {
         System.err.println("❌ selectIndex() failed: " + e.getMessage());
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + value);
+
 }
 
 @Override
@@ -343,6 +365,8 @@ public void selectAutoCompleteOptions(Locators inputLocator, String inputValue, 
     } catch (Exception e) {
         System.err.println("❌ selectAutoCompleteOptions() failed: " + e.getMessage());
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + valuesToSelect);
+
 }
 
 @Override
@@ -353,6 +377,8 @@ public void scrollToElement(WebElement element) {
     } catch (Exception e) {
         System.err.println("❌ scrollToElement() failed: " + e.getMessage());
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + element);
+
 }
 
 @Override
@@ -363,7 +389,11 @@ public void switchToWindow(int i) {
         dr.switchTo().window(windows[i]);
     } catch (Exception e) {
         System.err.println("❌ switchToWindow() failed: " + e.getMessage());
+        
+        
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + i);
+
 }
 
 
@@ -407,5 +437,9 @@ public WebElement element(Locators type, String value, String textToType) {
     } catch (Exception e) {
         System.err.println("❌ element() failed for locator: " + value + " — " + e.getMessage());
     }
+    TestListener.getTest().log(Status.INFO, "📋 Selected by visible text: " + value);
+
     return ele;
+    
+
 }}
