@@ -5,7 +5,7 @@
     <classes>
       <class name="com.example.LoginWithBase">
         <methods>
-          <include name="my"/>
+          <include name="browserLaunch"/>
         </methods>
       </class> <!-- com.example.LoginWithBase -->
     </classes>
